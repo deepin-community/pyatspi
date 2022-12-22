@@ -1,0 +1,543 @@
+pyatspi (2.38.1-1) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Update watch file format version to 4.
+
+  [ Samuel Thibault ]
+  * New upstream bugfix release.
+
+ -- Samuel Thibault <sthibault@debian.org>  Sat, 13 Mar 2021 23:31:55 +0100
+
+pyatspi (2.38.0-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Samuel Thibault <sthibault@debian.org>  Sat, 12 Sep 2020 21:49:49 +0200
+
+pyatspi (2.37.90-1) experimental; urgency=medium
+
+  * New upstream beta.
+    - patches/gtk-3: Upstreamed
+    - patches/no-dbus-glib: Upstreamed.
+  * Move tests patches from patches to tests-patches.
+  * control: Bump Standards-Version to 4.5.0 (no change)
+
+ -- Samuel Thibault <sthibault@debian.org>  Sun, 09 Aug 2020 17:38:37 +0200
+
+pyatspi (2.36.0-2) unstable; urgency=medium
+
+  * patches/no-dbus-glib: Avoid dbus-glib dependency (Closes: #955939)
+  * control: Replace libdbus-1-dev build-dep with libatspi2.0-dev.
+  * control: Update alioth list domain.
+  * patches/gtk-3: Use gtk3.
+  * control: Replace libgtk2.0-dev build-dep with libgtk-3-dev.
+
+ -- Samuel Thibault <sthibault@debian.org>  Wed, 29 Apr 2020 12:49:02 +0200
+
+pyatspi (2.36.0-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Samuel Thibault <sthibault@debian.org>  Sun, 08 Mar 2020 16:20:29 +0100
+
+pyatspi (2.35.1-1) experimental; urgency=medium
+
+  * New upstream release
+    - patches/python3.8: upstreamed.
+
+ -- Samuel Thibault <sthibault@debian.org>  Sun, 19 Jan 2020 01:05:03 +0100
+
+pyatspi (2.34.0-6) UNRELEASED; urgency=medium
+
+  * Trim trailing whitespace.
+  * Use versioned copyright format URI.
+  * Use secure URI in Homepage field.
+  * Set debhelper-compat version in Build-Depends.
+  * Set upstream metadata fields: Bug-Database, Bug-Submit.
+  * Drop unnecessary dependency on dh-autoreconf.
+  * Update standards version to 4.4.1, no changes needed.
+
+ -- Debian Janitor <janitor@jelmer.uk>  Wed, 25 Dec 2019 03:07:54 +0000
+
+pyatspi (2.34.0-5) unstable; urgency=medium
+
+  * rules: Drop python-all dependency.
+
+ -- Samuel Thibault <sthibault@debian.org>  Mon, 18 Nov 2019 22:54:18 +0100
+
+pyatspi (2.34.0-4) unstable; urgency=medium
+
+  * rules: Stop building python2 bindings.
+  * tests/control: Drop python-pyatspi dependency.
+  * tests/tests: Stop testing python2 versions.
+  * control: Drop python-pyatspi package, drop python-dbus build-dependency
+    (Closes: #937388).
+  * control: Add python3-gi build-dependency (Closes: Bug#945038).
+
+ -- Samuel Thibault <sthibault@debian.org>  Mon, 18 Nov 2019 19:46:41 +0100
+
+pyatspi (2.34.0-3) unstable; urgency=medium
+
+  [ Matthias Klose ]
+  * Run the autopkg tests for all python versions before failing,
+    make the output a bit more verbose.
+
+  [ Samuel Thibault ]
+  * patches/python3.8: Fix tests with Python 3.8 (Closes: Bug#944537).
+
+ -- Samuel Thibault <sthibault@debian.org>  Mon, 18 Nov 2019 15:03:52 +0100
+
+pyatspi (2.34.0-2) unstable; urgency=medium
+
+  * debian/tests/dbus-daemon: Send all dbus output to stdout, for
+    debuggability.
+  * rules, tests/tests: Prevent Xvfb from resetting between clients, it seems to
+    be creating a period of time during which clients can't connect
+    (Closes: Bug#940775).
+  * watch: Generalize pattern.
+
+ -- Samuel Thibault <sthibault@debian.org>  Thu, 19 Sep 2019 17:51:30 +0200
+
+pyatspi (2.34.0-1) unstable; urgency=medium
+
+  * New upstream release.
+    - patches/missing-file: Fixed upstream.
+  * copyright: Simplify and complete file.
+
+ -- Samuel Thibault <sthibault@debian.org>  Mon, 09 Sep 2019 23:02:00 +0200
+
+pyatspi (2.33.92-1) experimental; urgency=medium
+
+  * New upstream beta release.
+    - Fixes licensing questions.
+    - source/options: Remove compression option, now useless.
+    - patches/tests: Remove, now taken from tarball.
+    - patches/xml-test-fix: Upstreamed.
+    - patches/tests-python3: Upstreamed.
+    - patches/missing-file: Add missing files.
+  * gbp.conf: Disable using dfsg branch, enable pristine-tar use.
+  * control: Build-depend and Depend on gir1.2-atspi-2.0 (>= 2.33.1) to get
+    atspi_accessible_get_accessible_id.
+  * control: Remove dh-autoreconf build-dep.
+  * copyright: Remove duplicate license text.
+
+ -- Samuel Thibault <sthibault@debian.org>  Tue, 03 Sep 2019 00:50:34 +0200
+
+pyatspi (2.33.90+really2.33.90+dfsg-1) experimental; urgency=medium
+
+  * New upstream release
+    - patches/fix-print-usage: upstreamed.
+    - patches/git-lockmods: upstreamed.
+
+ -- Samuel Thibault <sthibault@debian.org>  Fri, 23 Aug 2019 00:52:57 +0200
+
+pyatspi (2.33.90+really2.32.1+dfsg-5) UNRELEASED; urgency=medium
+
+  * tests/tests: Fix temporary directory path.
+  * tests/control: Use @builddeps@ instead of copying them.
+
+ -- Samuel Thibault <sthibault@debian.org>  Sat, 31 Aug 2019 01:49:21 +0200
+
+pyatspi (2.33.90+really2.32.1+dfsg-4) unstable; urgency=medium
+
+  * rules: Run xvfb before dbus session, to make sure dbus doesn't catch host
+    X display.
+  * compat: Bump to 12.
+  * control: Bump debhelper build-dep accordingly.
+  * rules: Use -B debhelper option to implement the multi-python builds.
+    Remove configure flags then already brought by debhelper. Show testsuite
+    logs on failure.
+  * debian/tests/use_system_pyatspi.patch: Move to debian/patches.
+  * tests/control: Depend on python-pyatspi, python3-pyatspi.
+
+ -- Samuel Thibault <sthibault@debian.org>  Fri, 30 Aug 2019 10:42:45 +0200
+
+pyatspi (2.33.90+really2.32.1+dfsg-3) unstable; urgency=medium
+
+  * patches/tests: Re-import test files from upstream, with proper copyright
+    information this time.
+  * patches/disable-tests: Remove.
+  * patches/xml-test-fix: Fix xml bug.
+  * copyright: Update accordingly.
+  * rules: Enable tests.
+  * control: Add corresponding build-deps, notably libatk-adaptor version
+    >= 2.32.0-6~ which fixes a startup crash.
+  * patches/tests-python3: Fix python3 compatibility of tests.
+  * tests: Run tests in autopkgtest.
+
+ -- Samuel Thibault <sthibault@debian.org>  Tue, 27 Aug 2019 22:37:50 +0200
+
+pyatspi (2.33.90+really2.32.1+dfsg-2) unstable; urgency=medium
+
+  * Artificially bump version to fix erroneous experimental upload to
+    unstable, sorry!
+  * control: Set Vcs-* to salsa.debian.org.
+  * control: Bump Standards-Version to 4.4.0 (no changes).
+
+ -- Samuel Thibault <sthibault@debian.org>  Thu, 22 Aug 2019 23:54:09 +0200
+
+pyatspi (2.32.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+    - patches/git-lockmods: Merged.
+
+ -- Samuel Thibault <sthibault@debian.org>  Tue, 30 Jul 2019 20:11:05 +0200
+
+pyatspi (2.30.0+dfsg-3) unstable; urgency=medium
+
+  * patches/git-lockmods: Support locking/unlocking modifiers.
+
+ -- Samuel Thibault <sthibault@debian.org>  Sat, 26 Jan 2019 22:40:30 +0100
+
+pyatspi (2.30.0+dfsg-2) unstable; urgency=medium
+
+  * control: Drop python3 << 3.7 constraint, now fixed in #902989
+    (closes: Bug#912647)
+
+ -- Samuel Thibault <sthibault@debian.org>  Fri, 02 Nov 2018 10:31:52 +0100
+
+pyatspi (2.30.0+dfsg-1) unstable; urgency=medium
+
+  * New upstream release (closes: #902989).
+  * control: Bump Standards-Version to 4.2.0 (no changes).
+
+ -- Samuel Thibault <sthibault@debian.org>  Sat, 15 Sep 2018 09:34:34 +0200
+
+pyatspi (2.26.0+dfsg-3) unstable; urgency=medium
+
+  * Bump gir1.2-atspi-2.0 dependency as actually needed.
+  * Bump Standards-Version to 4.1.5 (no changes).
+  * control: Set X-Python3-Version to << 3.7, to avoid incompatibility with
+    Python 3.7's async keyword.
+  * control: drop ancien python >= 2.6 needed version.
+
+ -- Samuel Thibault <sthibault@debian.org>  Wed, 01 Aug 2018 23:19:05 +0200
+
+pyatspi (2.26.0+dfsg-1) unstable; urgency=medium
+
+  * control: Migrate priority to optional.
+  * control: Bump Standards-Version to 4.1.1.
+  * control: Remove old python-pyatspi2 and python3-pyatspi2 transitional
+    packages (Closes: Bug#878780).
+
+ -- Samuel Thibault <sthibault@debian.org>  Mon, 30 Oct 2017 17:48:53 +0100
+
+pyatspi (2.24.0+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Use canonical anonscm vcs URL.
+  * control: Update maintainer mailing list.
+
+ -- Samuel Thibault <sthibault@debian.org>  Tue, 08 Aug 2017 23:17:05 +0200
+
+pyatspi (2.20.3+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Samuel Thibault <sthibault@debian.org>  Tue, 17 Jan 2017 21:36:48 +0100
+
+pyatspi (2.20.2+dfsg-2) unstable; urgency=medium
+
+  * control: Drop libgail-common dependency, now that gtk recommends it.
+    Closes: Bug#822612.
+
+ -- Samuel Thibault <sthibault@debian.org>  Tue, 09 Aug 2016 20:46:12 +0200
+
+pyatspi (2.20.2+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * control: Bump Standards-Version to 3.9.8 (no change)
+
+ -- Samuel Thibault <sthibault@debian.org>  Fri, 15 Jul 2016 02:06:43 +0200
+
+pyatspi (2.20.1+dfsg-1) unstable; urgency=medium
+
+  [ Samuel Thibault ]
+  * control: Bump Standards-Version to 3.9.7 (no change).
+
+  [ Luke Yelavich ]
+  * New upstream release
+
+ -- Samuel Thibault <sthibault@debian.org>  Thu, 28 Apr 2016 01:37:42 +0200
+
+pyatspi (2.18.0+dfsg-3) unstable; urgency=medium
+
+  * control: Do not depend on qt-at-spi any more in python3-pyatspi too, now
+  that libqtgui4 recommends it. Closes: Bug#801679.
+
+ -- Samuel Thibault <sthibault@debian.org>  Sat, 26 Dec 2015 18:15:00 +0100
+
+pyatspi (2.18.0+dfsg-2) unstable; urgency=medium
+
+  * control: Do not depend on qt-at-spi any more, now that libqtgui4 recommends
+  it. Closes: Bug#757152.
+
+ -- Samuel Thibault <sthibault@debian.org>  Sun, 29 Nov 2015 18:00:10 +0100
+
+pyatspi (2.18.0+dfsg-1) unstable; urgency=medium
+
+  [ Luke Yelavich ]
+  * New upstream release
+
+ -- Samuel Thibault <sthibault@debian.org>  Mon, 28 Sep 2015 23:33:01 +0200
+
+pyatspi (2.16.0+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Samuel Thibault <sthibault@debian.org>  Fri, 01 May 2015 21:00:53 +0200
+
+pyatspi (2.14.0+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump Standards-Version to 3.9.6 (no changes).
+
+ -- Samuel Thibault <sthibault@debian.org>  Thu, 09 Oct 2014 22:24:51 +0200
+
+pyatspi (2.12.0+dfsg-3) unstable; urgency=medium
+
+  * New upstream release.
+  * watch: Only track even versions.
+
+ -- Samuel Thibault <sthibault@debian.org>  Sat, 30 Aug 2014 00:17:48 +0200
+
+pyatspi (2.10.0+dfsg-2) unstable; urgency=medium
+
+  * Bump Standards-Version to 3.9.5 (no changes).
+  * Depend on at-spi2-core and qt-at-spi. Closes: Bug#749523.
+
+ -- Samuel Thibault <sthibault@debian.org>  Mon, 04 Aug 2014 19:41:42 +0200
+
+pyatspi (2.10.0+dfsg-1) unstable; urgency=low
+
+  [ Samuel Thibault ]
+  * Bump Standards-Version to 3.9.4 (no changes).
+
+  [ Luke Yelavich ]
+  * New upstream release
+  * Bump gir1.2-atspi-2.0 build dependency to >= 2.9.90
+
+ -- Samuel Thibault <sthibault@debian.org>  Tue, 24 Sep 2013 23:45:18 +0200
+
+pyatspi (2.9.3+dfsg-1) unstable; urgency=low
+
+  [ Samuel Thibault ]
+  * Use wildcards instead of hardcoding python versions. Closes: Bug#711953.
+
+  [ Luke Yelavich ]
+  * New upstream release
+
+ -- Samuel Thibault <sthibault@debian.org>  Wed, 19 Jun 2013 00:22:20 +0200
+
+pyatspi (2.9.2+dfsg-1) unstable; urgency=low
+
+  [ Luke Yelavich ]
+  * New upstream release
+
+ -- Samuel Thibault <sthibault@debian.org>  Wed, 29 May 2013 23:24:29 +0200
+
+pyatspi (2.8.0+dfsg-2) unstable; urgency=low
+
+  * Upload to unstable
+  * Build-depend on python-all and python3-all instead of just python and
+    python3. Closes: Bug#707312.
+  * Add set -e to python building loops.
+
+ -- Samuel Thibault <sthibault@debian.org>  Fri, 10 May 2013 00:59:16 +0200
+
+pyatspi (2.8.0+dfsg-1) experimental; urgency=low
+
+  [ Luke Yelavich ]
+  * New upstream release
+
+ -- Samuel Thibault <sthibault@debian.org>  Tue, 26 Mar 2013 22:49:39 +0100
+
+pyatspi (2.7.91+dfsg-1) experimental; urgency=low
+
+  [ Luke Yelavich ]
+  * New upstream release
+  * debian/control: Adjust breaks/replaces version to 2.7.2+dfsg-2
+
+ -- Samuel Thibault <sthibault@debian.org>  Sun, 10 Mar 2013 17:56:01 +0100
+
+pyatspi (2.7.5+dfsg-1) experimental; urgency=low
+
+  [ Luke Yelavich ]
+  * New upstream release
+
+ -- Samuel Thibault <sthibault@debian.org>  Mon, 25 Feb 2013 23:04:21 +0100
+
+pyatspi (2.7.2+dfsg-2) experimental; urgency=low
+
+  * Backport "smooth upgrades from squeeze" fixes. Closes: Bug#699709.
+
+ -- Samuel Thibault <sthibault@debian.org>  Thu, 07 Feb 2013 01:50:11 +0100
+
+pyatspi (2.7.2+dfsg-1) experimental; urgency=low
+
+  [ Luke Yelavich ]
+  * New upstream release
+
+ -- Samuel Thibault <sthibault@debian.org>  Fri, 07 Dec 2012 04:07:59 +0100
+
+pyatspi (2.7.1+dfsg-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Samuel Thibault <sthibault@debian.org>  Mon, 22 Oct 2012 22:35:52 +0200
+
+pyatspi (2.6.0+dfsg-1) experimental; urgency=low
+
+  * docs: Add README and NEWS files.
+  * copyright: Update.
+
+ -- Samuel Thibault <sthibault@debian.org>  Sun, 30 Sep 2012 18:55:44 +0200
+
+pyatspi (2.6.0+dfsg-0ubuntu1) quantal; urgency=low
+
+  * New upstream release
+    - Install caret focus tracker into $bindir, rather than $pythondir/examples.
+    - Fix incorrect FSF address in file headers.
+
+ -- Luke Yelavich <themuso@ubuntu.com>  Tue, 25 Sep 2012 09:46:06 +1000
+
+pyatspi (2.5.92+dfsg-0ubuntu2) quantal; urgency=low
+
+  * debian/patches/fix-print-usage: in examples/magFocusTracker.py:
+    use print('...') - it's supposed to be python3. (LP: #1052331)
+
+ -- Daniel Holbach <daniel.holbach@ubuntu.com>  Tue, 18 Sep 2012 08:43:17 +0200
+
+pyatspi (2.5.92+dfsg-0ubuntu1) quantal; urgency=low
+
+  * New upstream release
+    - Fix for bug #683302 - Missing argument for set_current_value method
+    - Include interim focus tracker as an example.
+  * debian/patches/disable-tests: Refreshed
+
+ -- Luke Yelavich <themuso@ubuntu.com>  Tue, 18 Sep 2012 14:31:26 +1000
+
+pyatspi (2.5.91+dfsg-0ubuntu1) quantal-proposed; urgency=low
+
+  * New upstream release (LP: #1046585)
+    - Fix autogen.sh for non-sourcedir build.
+
+ -- Luke Yelavich <themuso@ubuntu.com>  Thu, 06 Sep 2012 09:15:08 +1000
+
+pyatspi (2.5.5+dfsg-0ubuntu1) quantal; urgency=low
+
+  * New upstream release
+    - Add getLocalizedName for actions.
+
+ -- Luke Yelavich <themuso@ubuntu.com>  Tue, 07 Aug 2012 12:07:54 +1000
+
+pyatspi (2.5.4+dfsg-0ubuntu1) quantal; urgency=low
+
+  * New upstream release
+    - Wrap all interfaces (BGO#679044).
+
+ -- Luke Yelavich <themuso@ubuntu.com>  Tue, 17 Jul 2012 09:48:00 +1000
+
+pyatspi (2.5.3+dfsg-3) unstable; urgency=low
+
+  * Yay for WiFi in the plane, my first upload at 30,000ft!
+  * Acknowledge NMU from Josselin, thanks!
+  * Fix typo in Breaks/Replaces relation. Closes: Bug#693490.
+
+ -- Samuel Thibault <sthibault@debian.org>  Sat, 17 Nov 2012 17:22:36 -0700
+
+pyatspi (2.5.3+dfsg-2.1) unstable; urgency=low
+
+  * Non-maintainer upload with Samuel’s approval.
+  * Ensure smooth upgrades from squeeze. Closes: #691160.
+    + Rename python*-pyatspi2 to python*-pyatspi since the API is
+      compatible with the former python-pyatspi package and the module
+      is named pyatspi.
+    + Create transitional python*-pyatspi2 packages.
+
+ -- Josselin Mouette <joss@debian.org>  Fri, 09 Nov 2012 10:01:50 +0100
+
+pyatspi (2.5.3+dfsg-2) unstable; urgency=low
+
+  * Make pyatspi depend on libgail-common. Closes: #682915.
+
+ -- Samuel Thibault <sthibault@debian.org>  Mon, 27 Aug 2012 13:50:11 +0200
+
+pyatspi (2.5.3+dfsg-1) unstable; urgency=low
+
+  [ Samuel Thibault ]
+  * control: Fix Homepage URL, thanks DUCK!
+
+  [ Luke Yelavich ]
+  * New upstream release.
+  * Build a python3 package.
+  * Bump debhelper build dependency to >= 7.0.50~ to fix a lintian warning.
+  * python-gobject -> python-gi.
+
+ -- Samuel Thibault <sthibault@debian.org>  Thu, 28 Jun 2012 23:38:12 -0300
+
+pyatspi (2.5.2+dfsg-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Samuel Thibault <sthibault@debian.org>  Wed, 06 Jun 2012 01:04:44 +0200
+
+pyatspi (2.5.1+dfsg-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Samuel Thibault <sthibault@debian.org>  Thu, 03 May 2012 01:30:46 +0200
+
+pyatspi (2.4.0+dfsg-1) unstable; urgency=low
+
+  [ Mario Lang ]
+  * Removing myself from uploaders.
+
+  [ Luke Yelavich ]
+  * New upstream release
+  * debian/control: python-pyatspi2 should provides: python-pyatspi
+
+  [ Samuel Thibault ]
+  * debian/control: Depend on atk-adaptor, to pull a11y on the application
+    side.
+
+ -- Samuel Thibault <sthibault@debian.org>  Mon, 02 Apr 2012 01:27:51 +0200
+
+pyatspi (2.3.92+dfsg-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/watch: Fix pattern.
+
+ -- Samuel Thibault <sthibault@debian.org>  Wed, 21 Mar 2012 01:17:33 +0100
+
+pyatspi (2.3.4+dfsg-1) unstable; urgency=low
+
+  [ Luke Yelavich ]
+  * New upstream release.
+  * Transition to dh_python2
+  * debian/control: Python-pyatspi should depend on gir1.2-atspi-2.0 >= 2.1.4
+    as per the above upstream changes
+  * debian/control: Bumped version of pygobject required to 2.90.1
+
+  [ Samuel Thibault ]
+  * debian/copyright: Fix format.
+  * control: Bump Standards-Version to 3.9.3 (no changes).
+
+ -- Samuel Thibault <sthibault@debian.org>  Sun, 26 Feb 2012 16:02:15 +0100
+
+pyatspi (2.0.2+dfsg-1) experimental; urgency=low
+
+  * Remove tests/* until upstream clarifies licensing.
+
+ -- Mario Lang <mlang@debian.org>  Thu, 28 Jul 2011 14:26:42 +0200
+
+pyatspi (2.0.2-1) experimental; urgency=low
+
+  [ Samuel Thibault ]
+  * Initial Debian package. (Closes: Bug#584971)
+
+  [ Luke Yelavich ]
+  * New upstream releases.
+  * Make debian/copyright follow DEP5
+
+ -- Mario Lang <mlang@debian.org>  Tue, 26 Jul 2011 10:02:36 +0200

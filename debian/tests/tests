@@ -1,0 +1,43 @@
+#!/bin/sh
+
+set -e 
+
+WORKDIR=$AUTOPKGTEST_TMP
+SRCDIR=$PWD
+
+DEB_HOST_MULTIARCH=$(dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+dh_autoreconf 2>&1
+chmod +x tests/pyatspi/runtests.sh
+chmod +x tests/pyatspi/testrunner.in
+patch -p1 < debian/tests-patches/use_system_pyatspi.patch 2>&1 || true
+
+PYVERS="$(py3versions --supported --version 2> /dev/null)"
+
+fail=0
+for pyver in $PYVERS; do
+  echo "====================  configure with PYTHON $pyver =================="
+  mkdir $WORKDIR/build-$pyver
+  cd $WORKDIR/build-$pyver
+
+  PYTHON=/usr/bin/python$pyver $SRCDIR/configure \
+                --prefix=/usr \
+                --libdir=/usr/lib/$DEB_HOST_MULTIARCH \
+                --enable-tests \
+                2>&1
+
+  echo "====================  test with PYTHON $pyver =================="
+  if xvfb-run -s -noreset -a dbus-run-session --dbus-daemon $SRCDIR/debian/tests/dbus-daemon -- make check 2>&1
+  then
+    echo "====================  test with PYTHON $pyver DONE =================="
+  else
+    echo "====================  test with PYTHON $pyver FAILED =================="
+    cat tests/pyatspi/test-suite.log
+    fail=1
+  fi
+done
+
+cd $SRCDIR
+patch -p1 -R < debian/tests-patches/use_system_pyatspi.patch
+
+exit $fail

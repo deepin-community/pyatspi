@@ -1,0 +1,52 @@
+#!/usr/bin/make -f
+
+# Taken from the pygobject packaging.
+PYVERS := $(shell py3versions --supported --version)
+
+configure_flags =
+
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+        configure_flags += --enable-tests
+endif
+
+%:
+	dh $@ --with=python3
+
+override_dh_auto_configure:
+	set -e ; for pyver in $(PYVERS); do \
+	    PYTHON=/usr/bin/python$$pyver dh_auto_configure -B $(CURDIR)/build-$$pyver -- $(configure_flags); \
+	done
+
+override_dh_auto_build:
+	set -e ; for pyver in $(PYVERS); do \
+	    PYTHON=/usr/bin/python$$pyver dh_auto_build -B $(CURDIR)/build-$$pyver; \
+	done
+
+override_dh_auto_test:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	chmod +x tests/pyatspi/runtests.sh
+	chmod +x tests/pyatspi/testrunner.in
+	fail=0; \
+	set -e ; for pyver in $(PYVERS); do \
+	    echo "====================  test with PYTHON $$pyver =================="; \
+	    if PYTHON=/usr/bin/python$$pyver xvfb-run -s -noreset -a dbus-run-session -- $(MAKE) -C $(CURDIR)/build-$$pyver check; \
+	    then \
+	      echo "====================  test with PYTHON $$pyver DONE =================="; \
+            else \
+	      echo "====================  test with PYTHON $$pyver FAILED =================="; \
+              cat $(CURDIR)/build-$$pyver/tests/pyatspi/test-suite.log; \
+	      fail=1; \
+	    fi; \
+	done; exit $$fail
+endif
+
+override_dh_auto_install:
+	set -e ; for pyver in $(PYVERS); do \
+	    PYTHON=/usr/bin/python$$pyver dh_auto_install -B $(CURDIR)/build-$$pyver; \
+	done
+
+override_dh_auto_clean:
+	-for pyver in $(PYVERS); do \
+	    dh_auto_clean -B $(CURDIR)/build-$$pyver; \
+	done
+	dh_auto_clean

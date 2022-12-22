@@ -1,0 +1,5 @@
+Tests: tests
+Depends: build-essential,
+         python3-pyatspi,
+         @builddeps@,
+         xauth, xvfb, dbus, at-spi2-core

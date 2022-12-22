@@ -1,0 +1,12 @@
+---
+ tests/pyatspi/runtests.sh |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/tests/pyatspi/runtests.sh
++++ b/tests/pyatspi/runtests.sh
+@@ -1,4 +1,4 @@
+-export PYTHONPATH=$top_srcdir:$top_srcdir/tests/pyatspi
++export PYTHONPATH=$top_srcdir/tests/pyatspi
+ 
+ export TEST_DATA_DIRECTORY=$top_srcdir/tests/data
+ export TEST_ATSPI_LIBRARY=$gtk_module_dir/libatk-bridge.so

@@ -1,0 +1,2 @@
+version=4
+opts=dversionmangle=s/\+dfsg$// http://ftp.gnome.org/pub/GNOME/sources/pyatspi/(\d.[0-9]*[02468])/pyatspi-@ANY_VERSION@@ARCHIVE_EXT@
